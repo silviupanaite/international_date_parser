@@ -6,7 +6,7 @@ require 'version'
 Gem::Specification.new do |gem|
   gem.name                  = 'international_date_parser'
   gem.version               = InternationalDateParser::VERSION
-  gem.authors               = ["Frenesim"]
+  gem.authors               = ["Humberto"]
   gem.email                 = 'hlsp999@gmail.com'
   gem.description           = "Ruby class Date wrapper to translate months and then parse the string"
   gem.summary               = "International Date Parser "
