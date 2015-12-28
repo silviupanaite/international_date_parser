@@ -1,5 +1,3 @@
-module InternationalDateParser
-
   # -*- coding: utf-8 -*-
   #
   # Purpose:
@@ -17,6 +15,8 @@ module InternationalDateParser
   # 2) As distributed, this code works for French, German, Italian, and Spanish.  You must add the month
   #    names for any additional languages you wish to handle.
   #
+
+module InternationalDateParser
   class Date
     def self.parse_international(date)
       parse(date_to_english(date))
