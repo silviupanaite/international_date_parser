@@ -15,6 +15,7 @@
   # 2) As distributed, this code works for French, German, Italian, and Spanish.  You must add the month
   #    names for any additional languages you wish to handle.
   #
+require 'my_gem/railtie' if defined?(Rails)
 
 module InternationalDateParser
   class Date
