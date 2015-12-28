@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Humberto"]
   spec.email         = ["hlsp999@gmail.com"]
   spec.summary       = "International Date Parser "
-  spec.description   = "Ruby class Date wrapper to translate months and then parse the string"
+  spec.description   = "Ruby class Date extension to translate months and then parse the string"
   spec.homepage      = 'http://github.com/frenesim/international_date_parser'
   spec.license       = "MIT"
 
