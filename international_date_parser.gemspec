@@ -13,6 +13,5 @@ Gem::Specification.new do |gem|
   gem.files                 = ["lib/international_date_parser.rb", "lib/version.rb"]
   gem.homepage              = 'http://github.com/frenesim/international_date_parser'
   gem.license               = 'MIT'
-  gem.require_paths         = ["lib"]
-  gem.required_ruby_version = '>= 1.9.3'
+  #gem.require_paths         = ["lib"]
 end
