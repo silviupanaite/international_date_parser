@@ -18,7 +18,6 @@
 
 module InternationalDateParser
 
-  require 'international_date_parser/railtie' if defined?(Rails)
 
   class Date
     def self.parse_international(date)
@@ -54,3 +53,5 @@ module InternationalDateParser
   end
 
 end
+
+require 'international_date_parser/railtie' if defined?(Rails)
