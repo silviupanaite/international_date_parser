@@ -6,9 +6,9 @@ Extend the date parsing capabilities of Ruby to work with dates which months are
 
 #### Usage:
 ```
-Date.parse_international("28 de Fevereiro de 2020")
-DateTime.parse_international("28 de Fevereiro de 2020")
-"28 de Fevereiro de 2020".to_international_date
+InternationalDateParser::Date.parse_international("28 de Fevereiro de 2020")
+InternationalDateParser::Date.parse_international("28 abr 2020")
+
 ```
 
 #### Notes:

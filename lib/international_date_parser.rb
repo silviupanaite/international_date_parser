@@ -18,37 +18,29 @@
 
 module InternationalDateParser
 
+  require 'date'
+  class Date < Date
+    MONTH_TO_PARSE = {
+      fr: %w(janvier février mars avril mai juin juillet août septembre octobre novembre décembre), # French
+      ge: %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember),  # German
+      it: %w(gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre),  # Italian
+      es: %w(enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre), # Spanish
+      pt: %w(janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro), # Portuguese
+    }
+    MONTH_TRANSLATIONS = MONTH_TO_PARSE.values.flatten
+    MONTH_TRANSLATIONS_SHORT = MONTH_TRANSLATIONS.map{|m| m[0,3]}
 
-  class Date
     def self.parse_international(date)
       Date.parse(date_to_english(date))
     end
 
-    MONTH_TRANSLATIONS = []
-    MONTH_TRANSLATIONS += %w(janvier février mars avril mai juin juillet août septembre octobre novembre décembre) # French
-    MONTH_TRANSLATIONS += %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember)  # German
-    MONTH_TRANSLATIONS += %w(gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre)  # Italian
-    MONTH_TRANSLATIONS += %w(enero  febrero marzo abril mayo  junio julio agosto  septiembre  octubre noviembre diciembre) # Spanish
-    MONTH_TRANSLATIONS += %w(janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro) # Portuguese
-
-    MONTH_TRANSLATIONS_SHORT = MONTH_TRANSLATIONS.map{|m| m[0,3]}
-
     def self.date_to_english(date)
-      month_from = date[/[^\s\d,]{3,}/i]      # Search for a month name
-      month_number =(MONTH_TRANSLATIONS.index(month_from) || MONTH_TRANSLATIONS_SHORT.index(month_from))
-      date.sub(month_from, Date::MONTH_TRANSLATIONS[month_number % 12 + 1]) if month_number
-    end
-  end
-
-  class DateTime
-    def self.parse_international(string)
-      parse Date.date_to_english(string)
-    end
-  end
-
-  class String
-    def to_international_date
-      Date::parse_international(self).to_date
+      month_from = date[/[^\s\d,]{3,}/i].downcase      # Search for a month name
+      month_index = MONTH_TRANSLATIONS.index(month_from) || MONTH_TRANSLATIONS_SHORT.index(month_from)
+      date.scan(/\s[^\s\d,]{1,2}\s/).each{|s| date.sub!(s[/[^\s]+/],'') if s}
+      date.downcase!
+      date.sub!(month_from, Date::MONTHNAMES[month_index % 12 + 1]) if month_index
+      date
     end
   end
 
