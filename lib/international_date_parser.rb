@@ -26,6 +26,7 @@ module InternationalDateParser
       it: %w(gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre),  # Italian
       es: %w(enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre), # Spanish
       pt: %w(janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro), # Portuguese
+      ro: %w(ianuarie februarie martie aprilie mai iunie iulie august septembrie octombrie noiembrie decembrie), # Romanian
     }
     MONTH_TRANSLATIONS = MONTH_TO_PARSE.values.flatten
     MONTH_TRANSLATIONS_SHORT = MONTH_TRANSLATIONS.map{|m| m[0,3]}
